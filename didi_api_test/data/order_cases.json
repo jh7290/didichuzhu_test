@@ -1,0 +1,76 @@
+{
+  "create_order_cases": [
+    {
+      "case_id": "ORDER_001",
+      "title": "正常创建订单",
+      "body": {
+        "start_place": "学校",
+        "end_place": "火车站",
+        "driver_count": 3,
+        "price": 28.5
+      },
+      "expected_code": 201,
+      "expected_status": "created"
+    },
+    {
+      "case_id": "ORDER_002",
+      "title": "起点为空",
+      "body": {
+        "start_place": "",
+        "end_place": "火车站",
+        "driver_count": 3,
+        "price": 28.5
+      },
+      "expected_code": 400,
+      "expected_message": "起点和终点不能为空"
+    },
+    {
+      "case_id": "ORDER_003",
+      "title": "终点为空",
+      "body": {
+        "start_place": "学校",
+        "end_place": "",
+        "driver_count": 3,
+        "price": 28.5
+      },
+      "expected_code": 400,
+      "expected_message": "起点和终点不能为空"
+    },
+    {
+      "case_id": "ORDER_004",
+      "title": "起点和终点相同",
+      "body": {
+        "start_place": "学校",
+        "end_place": "学校",
+        "driver_count": 3,
+        "price": 28.5
+      },
+      "expected_code": 400,
+      "expected_message": "起点和终点不能相同"
+    },
+    {
+      "case_id": "ORDER_005",
+      "title": "附近无司机",
+      "body": {
+        "start_place": "学校",
+        "end_place": "火车站",
+        "driver_count": 0,
+        "price": 28.5
+      },
+      "expected_code": 409,
+      "expected_message": "暂无司机"
+    },
+    {
+      "case_id": "ORDER_006",
+      "title": "订单金额无效",
+      "body": {
+        "start_place": "学校",
+        "end_place": "火车站",
+        "driver_count": 3,
+        "price": 0
+      },
+      "expected_code": 400,
+      "expected_message": "金额无效"
+    }
+  ]
+}
